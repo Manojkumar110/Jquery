@@ -80,7 +80,7 @@
         console.log(main)
         $(document).ready(function () {
             $("#frm").submit(function (event) {
-                
+
                 var name = $("input[name='heading']", this).val();
                 var userData = JSON.parse(localStorage.getItem("userHeading")) ?? [];
                 userData.push({
@@ -95,8 +95,8 @@
             console.log(userData)
             var finalData = '';
             userData.forEach((element, i) => {
-                console.log('Element :',element)
-                finalData +=`<h5>${element.name}</h5>`
+                console.log('Element :', element)
+                finalData += `<h5>${element.name}</h5>`
             });
             main.append(finalData)
         }
@@ -106,6 +106,10 @@
 
 
     <script>
+
+        
+
+
         // let user = [
         //     {
         //         'name':'manoj',

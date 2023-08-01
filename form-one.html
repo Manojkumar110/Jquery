@@ -51,10 +51,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="heading col-lg-8 ms-4">
-                    </div>
-                
-                    <form action="" id="frm" name="frmSave">
+                    <!-- <div class="heading col-lg-8 ms-4">
+                    </div> -->
+
+                    <form action="" id="heading-form" name="frmSave">
                         <div class="mb-3 col-lg-12">
                             <label for="exampleInputPassword1" class="form-label">Enter Heading</label>
                             <input type="text" class="form-control" name="heading" id="heading">
@@ -69,15 +69,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sub Heading</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <select id="dropdown-submenu" class="heading form-select form-select-sm col-lg-3"
+                        aria-label="Small select example">
+                        <option selected>Open this select menu</option>
+                    </select>
+                    <form action="" id="sub-heading-form" name="frmSave">
+                        <div class="mb-3 col-lg-12">
+                            <label for="exampleInputPassword1" class="form-label">Enter Sub Heading</label>
+                            <input type="text" class="form-control" name="subheading" id="subheading">
+                        </div>
+                        <button type="submit" class="btn btn-primary ms-2" id="btn">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -90,11 +96,85 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    
+
+                    <form action="">
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Heading</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select SubHeading</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="name" id="" placeholder="Enter name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">Number</label>
+                            <input type="number" class="form-control" name="number" id="" placeholder="Enter number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" id="" placeholder="Enter email">
+                        </div>
+
+                        <!-- -------------- -->
+
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">File</label>
+                            <input type="file" class="form-control" name="file" id="">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">Date</label>
+                            <input type="date" class="form-control" name="date" id="" placeholder="Enter email">
+                        </div>
+                        <div class="mb-3">
+                            
+                                <p>Select Language</p>
+                                <input type="radio" id="html" name="fav_language" value="HTML">
+                                <label for="html">HTML</label><br>
+                                <input type="radio" id="css" name="fav_language" value="CSS">
+                                <label for="css">CSS</label><br>
+                                <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                                <label for="javascript">JavaScript</label>
+                          
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">select Range</label>
+                            <input type="range" class="" id="points" name="points" min="0" max="10">
+                        </div>
+
+                        <div class="mb-3">
+                            <p>select check box</p>
+                            <input type="checkbox"  id="vehicle1" name="vehicle1" value="Bike">
+                            <label for="vehicle1">bike</label><br>
+                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                            <label for="vehicle2">car</label><br>
+                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                            <label for="vehicle3">boat</label><br>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>select color</p>
+                            <input type="color"  id="" name="color" >
+                        </div>
+
+                        <button type="submit" class="btn btn-primary ms-2" id="btn">Submit</button>
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -115,31 +195,71 @@
         crossorigin="anonymous"></script>
 
     <script>
-        var main = $('.heading')
-        console.log(main)
-        $(document).ready(function () {
-            $("#frm").submit(function (event) {
+        // mainHeading :-
 
+        var main = $('.heading')
+        $(document).ready(function () {
+            $("#heading-form").submit(function (event) {
                 var name = $("input[name='heading']", this).val();
-                var userData = JSON.parse(localStorage.getItem("userHeading")) ?? [];
-                userData.push({
-                    'name': name,
+                var mainHeading = JSON.parse(localStorage.getItem("mainHeading")) ?? [];
+                mainHeading.push({
+                    'heading': name,
                 })
-                localStorage.setItem('userHeading', JSON.stringify(userData))
+                localStorage.setItem('mainHeading', JSON.stringify(mainHeading))
                 event.target.reset();
             });
         });
+
+        // subHeadng :-
+
+        $(document).ready(function () {
+            $("#sub-heading-form").submit(function (event, i) {
+                var selectedHeading = $('#dropdown-submenu').find(":selected").val();
+                var subHeadingName = $("input[name='subheading']", this).val();
+                console.log(selectedHeading)
+                var subHeading = JSON.parse(localStorage.getItem("subHeading")) ?? [];
+                subHeading.push({
+                    'selectedHeading': selectedHeading,
+                    'subHeadingName': subHeadingName,
+                })
+                localStorage.setItem('subHeading', JSON.stringify(subHeading))
+                event.target.reset();
+                event.preventDefault();
+            });
+        });
+
         var displayData = () => {
-            var userData = JSON.parse(localStorage.getItem("userHeading")) ?? [];
-            console.log(userData)
+            var mainHeading = JSON.parse(localStorage.getItem("mainHeading")) ?? [];
             var finalData = '';
-            userData.forEach((element, i) => {
-                console.log('Element :', element)
-                finalData += `<h5>${element.name}</h5>`
+            mainHeading.forEach((element, i) => {
+                // console.log('Element :', element)
+                // finalData += `<h5>${element.name}</h5>`
+                finalData += `<option id="${i}" value="${element.heading}">${element.heading}</option>`
             });
             main.append(finalData)
         }
         displayData();
+
+    </script>
+
+    <!-- practice  -->
+    <!-- <script>
+        const obj1 = {
+            innerObj: {
+                name: 'Bob'
+            },
+            innerOBj2: {
+                color: 'blue'
+            }
+        }
+
+        const obj2 = {
+            lastName: 'Some',
+            age: 45
+        }
+
+        obj1.innerObj = Object.assign(obj1.innerObj, obj2);
+        console.log(obj1); -->
     </script>
 </body>
 
