@@ -30,6 +30,7 @@
 </head>
 
 <body>
+
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
         Heading
@@ -52,7 +53,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- <div class="heading col-lg-8 ms-4">
-                    </div> -->
+                </div> -->
 
                     <form action="" id="heading-form" name="frmSave">
                         <div class="mb-3 col-lg-12">
@@ -77,7 +78,7 @@
                         aria-label="Small select example">
                         <option selected>Open this select menu</option>
                     </select>
-                    <form action="" id="sub-heading-form" name="frmSave">
+                    <form action="" id="sub-heading-form" name="">
                         <div class="mb-3 col-lg-12">
                             <label for="exampleInputPassword1" class="form-label">Enter Sub Heading</label>
                             <input type="text" class="form-control" name="subheading" id="subheading">
@@ -92,15 +93,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">FORM</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    
-
-                    <form action="">
+                    <form action="" id="userDetailform">
                         <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example">
+                            <select id="dropdown-heading" class="form-select" aria-label="Default select example">
                                 <option selected>Select Heading</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -108,7 +107,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example">
+                            <select id="dropdown-subheading" class="form-select" aria-label="Default select example">
                                 <option selected>Select SubHeading</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -128,10 +127,6 @@
                             <label for="" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" id="" placeholder="Enter email">
                         </div>
-
-                        <!-- -------------- -->
-
-
                         <div class="mb-3">
                             <label for="" class="form-label">File</label>
                             <input type="file" class="form-control" name="file" id="">
@@ -139,18 +134,18 @@
 
                         <div class="mb-3">
                             <label for="" class="form-label">Date</label>
-                            <input type="date" class="form-control" name="date" id="" placeholder="Enter email">
+                            <input type="date" class="form-control" name="date" id="">
                         </div>
                         <div class="mb-3">
-                            
-                                <p>Select Language</p>
-                                <input type="radio" id="html" name="fav_language" value="HTML">
-                                <label for="html">HTML</label><br>
-                                <input type="radio" id="css" name="fav_language" value="CSS">
-                                <label for="css">CSS</label><br>
-                                <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-                                <label for="javascript">JavaScript</label>
-                          
+
+                            <p>Select Language</p>
+                            <input type="radio" id="html" name="fav_language" value="HTML">
+                            <label for="html">HTML</label><br>
+                            <input type="radio" id="css" name="fav_language" value="CSS">
+                            <label for="css">CSS</label><br>
+                            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                            <label for="javascript">JavaScript</label>
+
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">select Range</label>
@@ -159,21 +154,19 @@
 
                         <div class="mb-3">
                             <p>select check box</p>
-                            <input type="checkbox"  id="vehicle1" name="vehicle1" value="Bike">
+                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
                             <label for="vehicle1">bike</label><br>
-                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                            <label for="vehicle2">car</label><br>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                            <label for="vehicle3">boat</label><br>
+                            <!-- <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                        <label for="vehicle2">car</label><br>
+                        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                        <label for="vehicle3">boat</label><br> -->
                         </div>
-
                         <div class="mb-3">
                             <p>select color</p>
-                            <input type="color"  id="" name="color" >
+                            <input type="color" id="" name="color">
                         </div>
 
                         <button type="submit" class="btn btn-primary ms-2" id="btn">Submit</button>
-
                     </form>
                 </div>
             </div>
@@ -190,6 +183,50 @@
         </div>
         <button type="submit" class="btn btn-primary ms-4" id="btn">Submit</button>
     </form> -->
+    <div class="container-fluid">
+        <div class="row d-flex">
+            <!-- <div class="card-group"> -->
+            <div class="card col-lg-3">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">Heading</h5>
+
+                </div>
+            </div>
+            <div class="card col-lg-3">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">Heading With Subheading</h5>
+
+                </div>
+            </div>
+            <div class="card col-lg-3">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">form</h5>
+
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+
+    <!-- result section -->
+    <div class="container-fluid">
+        <div class="row d-flex">
+            <!-- <div class="card-group"> -->
+            <div class="card col-lg-10">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">Result</h5>
+
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- end result section -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
@@ -228,6 +265,43 @@
             });
         });
 
+
+        // user detail form :-
+
+        $(document).ready(function () {
+            $("#userDetailform").submit(function (event, i) {
+                var selectedHeading = $('#dropdown-heading').find(":selected").val();
+                var selectedSubHeading = $('#dropdown-subheading').find(":selected").val();
+                var userName = $("input[name='name']", this).val();
+                var userNumber = $("input[name='number']", this).val();
+                var userEmail = $("input[name='email']", this).val();
+                var userFile = $("input[name='file']", this).val();
+                var userDate = $("input[name='date']", this).val();
+                var userFile = $("input[name='fav_language']", this).val();
+                var userRange = $("input[name='points']", this).val();
+                var userVehicle = $("input[name='vehicle1']", this).val();
+                var userColor = $("input[name='color']", this).val();
+                var formDetail = JSON.parse(localStorage.getItem("formDetail")) ?? [];
+                formDetail.push({
+                    'selectedHeading': selectedHeading,
+                    'selectedSubHeading': selectedSubHeading,
+                    'userName': userName,
+                    'userNumber': userNumber,
+                    'userEmail': userEmail,
+                    'userFile': userFile,
+                    'userDate': userDate,
+                    'userRange': userRange,
+                    'userVehicle': userVehicle,
+                    'userColor': userColor,
+                })
+                localStorage.setItem('formDetail', JSON.stringify(formDetail))
+                // event.target.reset();
+                event.preventDefault();
+            });
+        });
+
+
+        // display data :-
         var displayData = () => {
             var mainHeading = JSON.parse(localStorage.getItem("mainHeading")) ?? [];
             var finalData = '';
