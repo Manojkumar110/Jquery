@@ -58,7 +58,7 @@
                     <form action="" id="heading-form" name="frmSave">
                         <div class="mb-3 col-lg-12">
                             <label for="exampleInputPassword1" class="form-label">Enter Heading</label>
-                            <input type="text" class="form-control" name="heading" id="heading">
+                            <input type="text" class="form-control" name="heading" id="heading" required>
                         </div>
                         <button type="submit" class="btn btn-primary ms-2" id="btn">Submit</button>
                     </form>
@@ -81,7 +81,7 @@
                     <form action="" id="sub-heading-form" name="">
                         <div class="mb-3 col-lg-12">
                             <label for="exampleInputPassword1" class="form-label">Enter Sub Heading</label>
-                            <input type="text" class="form-control" name="subheading" id="subheading">
+                            <input type="text" class="form-control" name="subheading" id="subheading" required>
                         </div>
                         <button type="submit" class="btn btn-primary ms-2" id="btn">Submit</button>
                     </form>
@@ -99,45 +99,37 @@
                 <div class="modal-body">
                     <form action="" id="userDetailform">
                         <div class="mb-3">
-                            <select id="dropdown-heading" class="form-select" aria-label="Default select example">
+                            <select id="dropdown-heading" class="heading form-select" aria-label="Default select example">
                                 <option selected>Select Heading</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <select id="dropdown-subheading" class="form-select" aria-label="Default select example">
+                            <select id="dropdown-subheading" class="subheading form-select" aria-label="Default select example">
                                 <option selected>Select SubHeading</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" id="" placeholder="Enter name">
+                            <input type="text" class="form-control" name="name" id="" placeholder="Enter name" required>
                         </div>
-
                         <div class="mb-3">
                             <label for="" class="form-label">Number</label>
-                            <input type="number" class="form-control" name="number" id="" placeholder="Enter number">
+                            <input type="number" class="form-control" name="number" id="" placeholder="Enter number" required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" id="" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" id="" placeholder="Enter email" required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">File</label>
-                            <input type="file" class="form-control" name="file" id="">
+                            <input type="file" class="form-control" name="file" id="" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="" class="form-label">Date</label>
-                            <input type="date" class="form-control" name="date" id="">
+                            <input type="date" class="form-control" name="date" id="" required>
                         </div>
                         <div class="mb-3">
-
                             <p>Select Language</p>
                             <input type="radio" id="html" name="fav_language" value="HTML">
                             <label for="html">HTML</label><br>
@@ -149,17 +141,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">select Range</label>
-                            <input type="range" class="" id="points" name="points" min="0" max="10">
+                            <input type="range" class="" id="points" name="points" min="0" max="10" required>
                         </div>
 
                         <div class="mb-3">
                             <p>select check box</p>
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" required>
                             <label for="vehicle1">bike</label><br>
-                            <!-- <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                        <label for="vehicle2">car</label><br>
-                        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                        <label for="vehicle3">boat</label><br> -->
                         </div>
                         <div class="mb-3">
                             <p>select color</p>
@@ -188,25 +176,30 @@
             <!-- <div class="card-group"> -->
             <div class="card col-lg-3">
                 <!-- <img src="..." class="card-img-top" alt="..."> -->
-                <div class="card-body">
+                <div class="main-heading card-body">
                     <h5 class="card-title">Heading</h5>
-
                 </div>
             </div>
             <div class="card col-lg-3">
                 <!-- <img src="..." class="card-img-top" alt="..."> -->
                 <div class="card-body">
                     <h5 class="card-title">Heading With Subheading</h5>
-
+                    <ul class="sub-heading  list-group">
+                        <!-- <li class="">selected heading
+                            <ul>
+                                <li>subheading</li>
+                            </ul>
+                        </li> -->
+                    </ul>
                 </div>
             </div>
-            <div class="card col-lg-3">
+            <!-- <div class="card col-lg-3"> -->
                 <!-- <img src="..." class="card-img-top" alt="..."> -->
-                <div class="card-body">
+                <!-- <div class="card-body">
                     <h5 class="card-title">form</h5>
 
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
             <!-- </div> -->
         </div>
     </div>
@@ -233,8 +226,11 @@
 
     <script>
         // mainHeading :-
-
+        var mainHeadingDiv = $('.main-heading')
+        var subHeadingDiv = $('.sub-heading')
         var main = $('.heading')
+        var subheading = $('.subheading')
+        console.log(main)
         $(document).ready(function () {
             $("#heading-form").submit(function (event) {
                 var name = $("input[name='heading']", this).val();
@@ -261,7 +257,7 @@
                 })
                 localStorage.setItem('subHeading', JSON.stringify(subHeading))
                 event.target.reset();
-                event.preventDefault();
+                // event.preventDefault();
             });
         });
 
@@ -296,7 +292,7 @@
                 })
                 localStorage.setItem('formDetail', JSON.stringify(formDetail))
                 // event.target.reset();
-                event.preventDefault();
+                // event.preventDefault();
             });
         });
 
@@ -304,36 +300,47 @@
         // display data :-
         var displayData = () => {
             var mainHeading = JSON.parse(localStorage.getItem("mainHeading")) ?? [];
+            var subHeading = JSON.parse(localStorage.getItem("subHeading")) ?? [];
+            var formDetail = JSON.parse(localStorage.getItem("formDetail")) ?? [];
+            console.log(formDetail)
             var finalData = '';
+            var subHeadingShowForm = '';
+            var showHeadingMainPage = '';
+            var showSubHeading = '';
             mainHeading.forEach((element, i) => {
-                // console.log('Element :', element)
-                // finalData += `<h5>${element.name}</h5>`
                 finalData += `<option id="${i}" value="${element.heading}">${element.heading}</option>`
+                showHeadingMainPage += `<p class="card-title">${element.heading}</p>`
             });
+            subHeading.forEach((element, i) => {
+                subHeadingShowForm += `<option id="${i}" value="${element.subHeadingName}">${element.subHeadingName}</option>`
+                showSubHeading += `<li>${element.selectedHeading}<ul><li>${element.subHeadingName}</li></li></ul>`
+            })
             main.append(finalData)
+            mainHeadingDiv.append(showHeadingMainPage)
+            subHeadingDiv.append(showSubHeading)
+            subheading.append(subHeadingShowForm)
         }
         displayData();
-
     </script>
 
     <!-- practice  -->
-    <!-- <script>
-        const obj1 = {
-            innerObj: {
-                name: 'Bob'
-            },
-            innerOBj2: {
-                color: 'blue'
-            }
-        }
+    <script>
+        // const obj1 = {
+        //     innerObj: {
+        //         name: 'Bob'
+        //     },
+        //     innerOBj2: {
+        //         color: 'blue'
+        //     }
+        // }
 
-        const obj2 = {
-            lastName: 'Some',
-            age: 45
-        }
+        // const obj2 = {
+        //     lastName: 'Some',
+        //     age: 45
+        // }
 
-        obj1.innerObj = Object.assign(obj1.innerObj, obj2);
-        console.log(obj1); -->
+        // obj1.innerObj = Object.assign(obj1.innerObj, obj2);
+        // console.log(obj1);
     </script>
 </body>
 
