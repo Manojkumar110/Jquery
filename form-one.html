@@ -27,7 +27,7 @@
             cursor: pointer;
         }
 
-        .card-title{
+        .card-title {
             border: 1px solid lightslategray;
             padding: 5px;
             border-radius: 5px;
@@ -190,19 +190,18 @@
                 </div>
             </div>
             <div class="card col-lg-5">
-                <div class="card-body">
-                    <h5 class="">Heading</h5>
+                <div class="subheading card-body">
+                    <h5 class="">Sub Heading</h5>
                 </div>
             </div>
-            <!-- <div class="card col-lg-3"> -->
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
-            <!-- <div class="card-body">
+            <!-- <div class="card col-lg-3">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
                     <h5 class="card-title">form</h5>
-
-                </div> -->
-            <!-- </div> -->
-            <!-- </div> -->
+                </div>
+            </div> -->
         </div>
+    </div>
     </div>
 
 
@@ -231,7 +230,7 @@
         var main = $('.heading')
         var subheading = $('.subheading')
         var userDetailDiv = $('.user-detail')
-        console.log(userDetailDiv)
+        // console.log(userDetailDiv)
         $(document).ready(function () {
             $("#heading-form").submit(function (event) {
                 var name = $("input[name='heading']", this).val();
@@ -245,12 +244,11 @@
         });
 
         // subHeadng :-
-
         $(document).ready(function () {
             $("#sub-heading-form").submit(function (event, i) {
                 var selectedHeading = $('#dropdown-submenu').find(":selected").val();
                 var subHeadingName = $("input[name='subheading']", this).val();
-                console.log(selectedHeading)
+                // console.log(selectedHeading)
                 var subHeading = JSON.parse(localStorage.getItem("subHeading")) ?? [];
                 subHeading.push({
                     'selectedHeading': selectedHeading,
@@ -262,7 +260,6 @@
             });
         });
 
-
         // user detail form :-
 
         $(document).ready(function () {
@@ -273,7 +270,8 @@
                 var userNumber = $("input[name='number']", this).val();
                 var userEmail = $("input[name='email']", this).val();
                 var userDate = $("input[name='date']", this).val();
-                var userFile = $("input[name='fav_language']", this).val();
+                var userRadio = $("input[name='fav_language']", this).val();
+                // var userFile = $("input[name='file']", this).val();
                 var userRange = $("input[name='points']", this).val();
                 var userVehicle = $("input[name='vehicle1']", this).val();
                 var userColor = $("input[name='color']", this).val();
@@ -286,6 +284,7 @@
                     'email': userEmail,
                     'date': userDate,
                     'range': userRange,
+                    'radio':userRadio,
                     'vehicle': userVehicle,
                     'color': userColor,
                 })
@@ -313,11 +312,12 @@
             });
             subHeading.forEach((element, i) => {
                 subHeadingShowForm += `<option id="${i}" value="${element.subHeadingName}">${element.subHeadingName}</option>`
-                // showSubHeading += `<li>${element.selectedHeading}<ul><li>${element.subHeadingName}</li></li></ul>`
+                showSubHeading += `<li>${element.selectedHeading}<ul><li>${element.subHeadingName}</li></li></ul>`
+                // console.log(element.selectedHeading)
             })
 
-            formDetail.forEach((element, i) =>{
-                console.log('Heading', element.heading)
+            formDetail.forEach((element, i) => {
+                // console.log('Heading', element.heading)
                 showResult += `
                 <p>Heading : ${element.heading}</p>
                 <p>Sub Heading : ${element.subHeading}</p>
@@ -326,8 +326,11 @@
                 <p>Email : ${element.email}</p>
                 <p>Date : ${element.date}</p>
                 <p>Range : ${element.range}</p>
+                <p>Radio : ${element.radio}</p>
                 <p>Check Box : ${element.vehicle}</p>
                 <p>Color : ${element.color}</p>
+                
+                <hr>
                 `
             })
 
@@ -341,6 +344,7 @@
     </script>
     <!-- practice  -->
     <!-- <script>
+
         const obj1 = {
             innerObj: {
                 name: 'Bob'
