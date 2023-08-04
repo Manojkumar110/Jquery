@@ -3,5 +3,7 @@
 }
 
 .subheadingtxt{
-    margin-left: -70px !important;
+    border: 1px solid lightgray;
+    padding: 5px;
+    border-radius: 10px;
 }
