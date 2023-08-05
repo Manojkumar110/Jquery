@@ -3,6 +3,7 @@
 }
 
 .subheadingtxt{
+    /* display: inline-block; */
     border: 1px solid lightgray;
     padding: 5px;
     border-radius: 10px;
