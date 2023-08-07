@@ -6,7 +6,9 @@ $(document).ready(function () {
     }
     $(".select-heading").on('submit', function (e) {
         var heading = $('input').val()
+        // $("main section").remove();
         $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)">X</button></h1></section>')
+        
         $('.select-sub-heading option').remove()
         $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
         $('.select-form #headings option').remove()
@@ -130,3 +132,6 @@ function removeFun(remove) {
     $(remove).parent().remove();
     setLocalStorage();
 }
+
+
+
