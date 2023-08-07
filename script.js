@@ -4,11 +4,11 @@ $(document).ready(function () {
     if (heading) {
         $("#mainContainer").append(heading);
     }
+
     $(".select-heading").on('submit', function (e) {
         var heading = $('input').val()
-        // $("main section").remove();
         $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)">X</button></h1></section>')
-        
+
         $('.select-sub-heading option').remove()
         $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
         $('.select-form #headings option').remove()
@@ -31,9 +31,9 @@ $(document).ready(function () {
         var heading_in_sub_heading = $('select option:selected', this).val()
         var sub_heading = $('input', this).val()
         $("section:nth-child(" + heading_in_sub_heading + ")").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)">X</button></h4></div>')
-        
+
         $('.select-form #sectionTagId option').remove()
-        $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Heading</option>")
+        $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
         $('section .container h4').each(function (key) {
             key = key + 1
             $(this).text()
@@ -57,7 +57,7 @@ $(document).ready(function () {
     $('.formheading').on('change', function (e) {
         var heading_in_sub_heading = $('.formheading option:selected').val()
         $('.select-form #sectionTagId option').remove()
-        $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Heading</option>")
+        $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
         subheading = []
         $("section:nth-child(" + heading_in_sub_heading + ") div h4").each(function (key) {
             subheading.push($(this).text())
@@ -126,6 +126,7 @@ $(document).ready(function () {
     });
     setLocalStorage();
 });
+
 
 function removeFun(remove) {
     $(remove).parent().siblings().remove();
