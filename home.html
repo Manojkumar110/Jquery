@@ -20,7 +20,8 @@
                 </button>
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subHeadingModal">
+                <button type="button" id="SubSeadingId" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#subHeadingModal">
                     Sub Heading
                 </button>
             </div>
@@ -74,26 +75,27 @@
     </div>
 
     <!-- Form Section -->
-
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Form Modal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Form</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action=""  class="select-form">
+                <form action="" class="select-form">
                     <div class="modal-body">
                         <select class="formheading form-select" id="headings" name="formheading"
                             aria-label="Default select example">
                             <option value="">Select Heading</option>
                         </select><br>
 
-                        <select class="subheadingform mt-3 form-select" id="sectionTagId" aria-label="Default select example">
+                        <select class="subheadingform mt-3 form-select" id="sectionTagId"
+                            aria-label="Default select example">
                             <option value="subheading" selected disabled>Select Sub Heading</option>
                         </select>
 
-                        <select id="controlType" class="select-input form-select mt-3" aria-label="Default select example">
+                        <select id="controlType" class="select-input form-select mt-3"
+                            aria-label="Default select example">
                             <option value="" selected disabled>Select Input Type</option>
                             <option>button</option>
                         </select>
@@ -127,164 +129,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="script.js"></script>
 
-    <script>
-        //heading section
-        $(document).ready(function () {
-            var heading = getLocalStorage("Heading");
-            if (heading) {
-                $("#mainContainer").append(heading);
-            }
-            $(".select-heading").on('submit', function (e) {
-                var heading = $('input').val()
-                $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)">X</button></h1></section>')
-                $('.select-sub-heading option').remove()
-                $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
-                // $('section h1').each(function (key) {
-            //     key = key + 1
-            //     var heading_in_sub_heading = $(this).text()
-            //     $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-            // })
-                $('.select-form #headings option').remove()
-                $('.select-form #headings').append("<option value='' selected disabled> Please Select Heading</option>")
-
-                $('section h1').each(function (key) {
-                    key = key + 1
-                    var heading_in_sub_heading = $(this).text()
-                    // console.log('heading in sub heading :', heading_in_sub_heading)
-                    $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-                    $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-
-                })
-                e.preventDefault();
-                e.target.reset();
-                setLocalStorage();
-            })
-        });
-
-        //Sub Heading Section :-
-        $(document).ready(function () {
-            // $('section h1').each(function (key) {
-            //     key = key + 1
-            //     var heading_in_sub_heading = $(this).text()
-            //     $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-            // })
-
-            $(".select-sub-heading").on('submit', function (e) {
-                var heading_in_sub_heading = $('select option:selected', this).val()
-                var sub_heading = $('input', this).val()
-                $("section:nth-child(" + heading_in_sub_heading + ")").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)">X</button></h4></div>')
-
-                $('.select-form #sectionTagId option').remove()
-                $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Heading</option>")
-                $('section .container h4').each(function (key) {
-                    key = key + 1
-                    $(this).text()
-                    e.preventDefault();
-                    e.target.reset();
-                    setLocalStorage();
-                })
-            })
-        });
-
-        // form section :- 
-
-        $(document).ready(function () {
-            $('section h1').each(function (key) {
-                key = key + 1
-                var heading_in_sub_heading = $(this).text()
-                $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-            })
-            var subheading = [];
-            $('.formheading').on('change', function (e) {
-              
-                var heading_in_sub_heading = $('.formheading option:selected').val()
-
-                $('.select-form #sectionTagId option').remove()
-                $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Heading</option>")
-                subheading = []
-                $("section:nth-child(" + heading_in_sub_heading + ") div h4").each(function (key) {
-                    subheading.push($(this).text())
-                })
-
-                $.each(subheading, function (index, itemData) {
-                    $('#sectionTagId').append($("<option></option>")
-                        .attr("value", index + 2)
-                        .text(itemData));
-                });
-
-            })
-
-            $(".select-form").on('submit', function () {
-                
-
-                var frmheading = $('.formheading option:selected').val()
-
-                var frmsh = $('.subheadingform option:selected').val()
-
-                $('.select-input').change(function () {
-                    var frmchngvalue = $(this).val()
-                })
-
-                var controlType = $('#controlType').val();
-                var inputLabel = $('.labels').val()
-                var inputClass = $('.classes').val()
-                var InputId = $('.ids').val()
-                var inputPlaceholder = $('.placeholders').val()
-                var inputValue = $('.values').val()
-                var inputName = $('.names').val()
-                var inputActIion = $('.actions').val()
-                var inputOption = $('.options').val()
-
-                var element = '<input type="' + controlType + '" label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
-                $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element)
-                setLocalStorage();
-            })
-            e.preventDefault();
-        });
-
-        function setLocalStorage() {
-            var selectValue = $('#mainContainer').html();
-            localStorage.setItem("Heading", selectValue);
-        };
-
-        function getLocalStorage(property) {
-            return localStorage.getItem(property);
-        };
-
-        // dragdrop
-
-        $(document).ready(function () {
-            $('#mainContainer').sortable({
-                change: function (event, ui) { setLocalStorage() },
-                update: function (event, ui) { setLocalStorage() },
-                connectWith: '#mainContainer'
-            });
-
-            $('.container').sortable({
-                change: function (event, ui) { setLocalStorage() },
-                update: function (event, ui) { setLocalStorage() },
-                connectWith: '.container',
-                cancel: 'h4, button'
-            });
-
-            $('section').sortable({
-                change: function (event, ui) { setLocalStorage() },
-                update: function (event, ui) { setLocalStorage() },
-                connectWith: 'section',
-                cancel: 'h1, button'
-            });
-
-            setLocalStorage();
-        });
-
-
-        function removeFun(remove) {
-            $(remove).parent().remove();
-            setLocalStorage();
-        }
-    </script>
+   
 </body>
+
 </html>
