@@ -1,4 +1,3 @@
-//heading section
 $(document).ready(function () {
     var heading = getLocalStorage("Heading");
     if (heading) {
@@ -19,6 +18,7 @@ $(document).ready(function () {
             $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
             $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
         })
+     
         e.preventDefault();
         e.target.reset();
         setLocalStorage();
@@ -27,6 +27,7 @@ $(document).ready(function () {
 
 //Sub Heading Section :-
 $(document).ready(function () {
+    getLocalStorage("Heading")
     $(".select-sub-heading").on('submit', function (e) {
         var heading_in_sub_heading = $('select option:selected', this).val()
         var sub_heading = $('input', this).val()
@@ -38,6 +39,7 @@ $(document).ready(function () {
             key = key + 1
             $(this).text()
             e.preventDefault();
+            // location.reload();
             e.target.reset();
             setLocalStorage();
         })
@@ -103,35 +105,38 @@ function getLocalStorage(property) {
 };
 
 // dragdrop
-$(document).ready(function () {
-    $('#mainContainer').sortable({
-        change: function (event, ui) { setLocalStorage() },
-        update: function (event, ui) { setLocalStorage() },
-        connectWith: '#mainContainer',
-        cancel: 'h4, button'
-    });
+// $(document).ready(function () {
+//     $('#mainContainer').sortable({
+//         change: function (event, ui) { setLocalStorage()},
+//         update: function (event, ui) { setLocalStorage()},
+//         connectWith: '#mainContainer',
+//         cancel: 'h4, button'
+//     });
 
-    $('.container').sortable({
-        change: function (event, ui) { setLocalStorage() },
-        update: function (event, ui) { setLocalStorage() },
-        connectWith: '.container',
-        cancel: 'h4, button'
-    });
+//     $('.container').sortable({
+//         change: function (event, ui) { setLocalStorage()},
+//         update: function (event, ui) { setLocalStorage()},
+//         connectWith: '.container',
+//         cancel: 'h4, button'
+//     });
 
-    $('section').sortable({
-        change: function (event, ui) { setLocalStorage() },
-        update: function (event, ui) { setLocalStorage() },
-        connectWith: 'section',
-        cancel: 'h1, button'
-    });
-    setLocalStorage();
-});
+//     $('section').sortable({
+//         change: function (event, ui) { setLocalStorage()},
+//         update: function (event, ui) { setLocalStorage()},
+//         connectWith: 'section',
+//         cancel: 'h1, button'
+        
+//     });
+//     setLocalStorage();
+// });
 
 
 function removeFun(remove) {
     $(remove).parent().siblings().remove();
-    $(remove).parent().remove();
+    $(remove).parent().parent().remove();
     setLocalStorage();
+    location.reload();
+
 }
 
 
