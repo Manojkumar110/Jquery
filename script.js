@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     $(".select-heading").on('submit', function (e) {
         var heading = $('input').val()
-        $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)">X</button></h1></section>')
+        $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="Girl in a jacket" width="10" height="10"></button></h1></section>')
 
         $('.select-sub-heading option').remove()
         $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
@@ -18,7 +18,7 @@ $(document).ready(function () {
             $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
             $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
         })
-     
+
         e.preventDefault();
         e.target.reset();
         setLocalStorage();
@@ -31,7 +31,7 @@ $(document).ready(function () {
     $(".select-sub-heading").on('submit', function (e) {
         var heading_in_sub_heading = $('select option:selected', this).val()
         var sub_heading = $('input', this).val()
-        $("section:nth-child(" + heading_in_sub_heading + ")").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)">X</button></h4></div>')
+        $("section:nth-child(" + heading_in_sub_heading + ")").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="delete button" width="10" height="10"></button></h4></div>')
 
         $('.select-form #sectionTagId option').remove()
         $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
@@ -107,25 +107,25 @@ function getLocalStorage(property) {
 // dragdrop
 // $(document).ready(function () {
 //     $('#mainContainer').sortable({
-//         change: function (event, ui) { setLocalStorage()},
-//         update: function (event, ui) { setLocalStorage()},
+//         change: function (event, ui) { setLocalStorage() },
+//         update: function (event, ui) { setLocalStorage() },
 //         connectWith: '#mainContainer',
-//         cancel: 'h4, button'
+//         cancel: 'button'
 //     });
 
 //     $('.container').sortable({
-//         change: function (event, ui) { setLocalStorage()},
-//         update: function (event, ui) { setLocalStorage()},
+//         change: function (event, ui) { setLocalStorage() },
+//         update: function (event, ui) { setLocalStorage() },
 //         connectWith: '.container',
-//         cancel: 'h4, button'
+//         cancel: 'button'
 //     });
 
 //     $('section').sortable({
-//         change: function (event, ui) { setLocalStorage()},
-//         update: function (event, ui) { setLocalStorage()},
+//         change: function (event, ui) { setLocalStorage() },
+//         update: function (event, ui) { setLocalStorage() },
 //         connectWith: 'section',
 //         cancel: 'h1, button'
-        
+
 //     });
 //     setLocalStorage();
 // });
@@ -138,6 +138,10 @@ function removeFun(remove) {
     location.reload();
 
 }
+
+$(".smtbtn").click(function () {
+    // alert("The paragraph was clicked.")
+});
 
 
 
