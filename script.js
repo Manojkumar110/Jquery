@@ -122,7 +122,6 @@ $(document).ready(function () {
         $("section:nth-child(" + heading_in_sub_heading + ") div h4").each(function (key) {
             subheading.push($(this).text())
         })
-
         $.each(subheading, function (index, itemData) {
             $('#sectionTagId').append($("<option></option>")
                 .attr("value", index + 2)
@@ -148,7 +147,6 @@ $(document).ready(function () {
         var element = '<input type="' + controlType + '" label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
         $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element)
         setLocalStorage();
-        
     })
     // e.preventDefault();
 });
