@@ -26,21 +26,21 @@ $(document).ready(function () {
 // -----------------------Heading End Here-------------------------------
 
 //Sub Heading Section(New) :-
-$("#SubSeadingId").click(function(){
+$("#SubSeadingId").click(function () {
     var heading = getLocalStorage("Heading");
-        $('.select-sub-heading option').remove()
-        $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
-        $('.select-form #headings option').remove()
-        $('.select-form #headings').append("<option value='' selected disabled> Please Select Heading</option>")
-        $('section h1').each(function (key) {
-            key = key + 1
-            var heading_in_sub_heading = $(this).text()
-            $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-            $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-        })
-        // e.preventDefault();
-        // e.target.reset();
-        setLocalStorage();
+    $('.select-sub-heading option').remove()
+    $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
+    $('.select-form #headings option').remove()
+    $('.select-form #headings').append("<option value='' selected disabled> Please Select Heading</option>")
+    $('section h1').each(function (key) {
+        key = key + 1
+        var heading_in_sub_heading = $(this).text()
+        $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
+        $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
+    })
+    // e.preventDefault();
+    // e.target.reset();
+    setLocalStorage();
 });
 
 
@@ -68,41 +68,41 @@ $(document).ready(function () {
 // ------------------------------Sub Heading old End Here-------------------------
 
 // form section(New)
-$("#formModelId").click(function(){
+$("#formModelId").click(function () {
     var heading = getLocalStorage("Heading");
-        $('.select-sub-heading option').remove()
-        $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
-        $('.select-form #headings option').remove()
-        $('.select-form #headings').append("<option value='' selected disabled> Please Select Heading</option>")
-        $('section h1').each(function (key) {
-            key = key + 1
-            var heading_in_sub_heading = $(this).text()
-            $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-            $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
-        })
-        // e.preventDefault();
-        // e.target.reset();
-        // setLocalStorage();
+    $('.select-sub-heading option').remove()
+    $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
+    $('.select-form #headings option').remove()
+    $('.select-form #headings').append("<option value='' selected disabled> Please Select Heading</option>")
+    $('section h1').each(function (key) {
+        key = key + 1
+        var heading_in_sub_heading = $(this).text()
+        $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
+        $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
+    })
+    // e.preventDefault();
+    // e.target.reset();
+    // setLocalStorage();
 
-        var subheading = [];
-        $('.formheading').on("change", function (e) {
-            var heading_in_sub_heading = $('.formheading option:selected').val()
-            $('.select-form #sectionTagId option').remove()
-            $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
-            subheading = []
-            $("section:nth-child(" + heading_in_sub_heading + ") div h4").each(function (key) {
-                subheading.push($(this).text())
-            })
-    
-            $.each(subheading, function (index, itemData) {
-                $('#sectionTagId').append($("<option></option>")
-                    .attr("value", index + 2)
-                    .text(itemData));
-            });
+    var subheading = [];
+    $('.formheading').on("change", function (e) {
+        var heading_in_sub_heading = $('.formheading option:selected').val()
+        $('.select-form #sectionTagId option').remove()
+        $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
+        subheading = []
+        $("section:nth-child(" + heading_in_sub_heading + ") div h4").each(function (key) {
+            subheading.push($(this).text())
         })
-        // e.preventDefault();
-    });
-    
+
+        $.each(subheading, function (index, itemData) {
+            $('#sectionTagId').append($("<option></option>")
+                .attr("value", index + 2)
+                .text(itemData));
+        });
+    })
+    // e.preventDefault();
+});
+
 // ------------------Form(New)End Here----------------------------
 
 // form section(old) :- 
@@ -129,31 +129,93 @@ $(document).ready(function () {
         });
     })
 
+    // testing start here:-
+    $("#controlType").click(function (e) {
+        var frmheading = $('.formheading option:selected').val()
+        var frmsh = $('.subheadingform option:selected').val()
+        $('.select-input').change(function () {
+            var frmchngvalue = $(this).val()
+            console.log("options :", frmchngvalue)
+            console.log("options Type :", jQuery.type(frmchngvalue))
+
+            var frmchngvalue = frmchngvalue;
+            switch (frmchngvalue) {
+                case 'button':
+                    $('.placeholders').attr('readonly', true);
+                    $('.labels').attr('readonly', true);
+                    break;
+                case 'checkbox':
+                    $('.placeholders').attr('readonly', true);
+                    $('.values').attr('readonly', true);
+                    break;
+                case 'color':
+                    $('.placeholders').attr('readonly', true);
+                    $('.values').attr('readonly', true);
+                    break;
+                case 'date':
+                    $('.placeholders').attr('readonly', true);
+                    $('.values').attr('readonly', true);
+                    break;
+                case 'datetime-local':
+                    $('.placeholders').attr('readonly', true);
+                    $('.values').attr('readonly', true);
+                    break;
+                case 'radio':
+                    $('.placeholders').attr('readonly', true);
+                    $('.values').attr('readonly', true);
+                    break;
+                case 'range':
+                    $('.placeholders').attr('readonly', true);
+                    break;
+                // default:
+                //     alert('Please Select Input Option!');
+            }
+        })
+        // var controlType = $('#controlType').val();
+        // var inputLabel = $('.labels').val()
+        // var inputClass = $('.classes').val()
+        // var InputId = $('.ids').val()
+        // var inputValue = $('.values').val()
+        // var inputName = $('.names').val()
+        // var inputActIion = $('.actions').val()
+        // var inputOption = $('.options').val()
+        // var element = '<input type="' + controlType + '"  " label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
+        // var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '"  /><br>'
+        // $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element)
+        // setLocalStorage();
+        // e.preventDefault();
+        // e.target.reset();
+    })
+    // tesing end here :-
+
+
     $(".select-form").on('submit', function (e) {
         var frmheading = $('.formheading option:selected').val()
         var frmsh = $('.subheadingform option:selected').val()
         $('.select-input').change(function () {
             var frmchngvalue = $(this).val()
-            console.log("options :",frmchngvalue)
+            console.log("options :", frmchngvalue)
         })
         var controlType = $('#controlType').val();
         var inputLabel = $('.labels').val()
         // var inputFor = $('.for').val()
         var inputClass = $('.classes').val()
         var InputId = $('.ids').val()
-        // var inputPlaceholder = $('.placeholders').val()
+        var inputPlaceholder = $('.placeholders').val()
         var inputValue = $('.values').val()
         var inputName = $('.names').val()
         // var inputActIion = $('.actions').val()
         // var inputOption = $('.options').val()
         // var element = '<input type="' + controlType + '"  " label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
-        var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '"  /><br>'
+        var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '" placeholder="' + inputPlaceholder + '"  /><br>'
         $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element)
         setLocalStorage();
         e.preventDefault();
-        // e.target.reset();
+        e.target.reset();
     })
-    
+
+
+
 });
 
 // ----------------------------Form Section(old) End Here----------------------------------
@@ -204,7 +266,7 @@ function removeFun(remove) {
 
 $(".smtbtn").click(function () {
     location.reload();
-    
+
 });
 
 
