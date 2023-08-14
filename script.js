@@ -148,6 +148,7 @@ $(document).ready(function () {
         var element = '<input type="' + controlType + '" label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
         $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element)
         setLocalStorage();
+        
     })
     // e.preventDefault();
 });
