@@ -38,7 +38,7 @@ $("#SubSeadingId").click(function(){
             $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
             $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
         })
-        e.preventDefault();
+        // e.preventDefault();
         // e.target.reset();
         setLocalStorage();
 });
@@ -129,26 +129,31 @@ $(document).ready(function () {
         });
     })
 
-    $(".select-form").on('submit', function () {
+    $(".select-form").on('submit', function (e) {
         var frmheading = $('.formheading option:selected').val()
         var frmsh = $('.subheadingform option:selected').val()
         $('.select-input').change(function () {
             var frmchngvalue = $(this).val()
+            console.log("options :",frmchngvalue)
         })
         var controlType = $('#controlType').val();
         var inputLabel = $('.labels').val()
+        // var inputFor = $('.for').val()
         var inputClass = $('.classes').val()
         var InputId = $('.ids').val()
-        var inputPlaceholder = $('.placeholders').val()
+        // var inputPlaceholder = $('.placeholders').val()
         var inputValue = $('.values').val()
         var inputName = $('.names').val()
-        var inputActIion = $('.actions').val()
-        var inputOption = $('.options').val()
-        var element = '<input type="' + controlType + '" label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
+        // var inputActIion = $('.actions').val()
+        // var inputOption = $('.options').val()
+        // var element = '<input type="' + controlType + '"  " label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
+        var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '"  /><br>'
         $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element)
         setLocalStorage();
+        e.preventDefault();
+        // e.target.reset();
     })
-    // e.preventDefault();
+    
 });
 
 // ----------------------------Form Section(old) End Here----------------------------------
@@ -175,7 +180,7 @@ $(document).ready(function () {
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: '.container',
-        cancel: 'h4, button'
+        cancel: 'label, h4, button'
     });
 
     $('section').sortable({
