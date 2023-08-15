@@ -69,9 +69,9 @@ $(document).ready(function () {
 
 // form section(New)
 $("#formModelId").click(function () {
-    // e.target.reset()
+
     formReset()
-    var heading = getLocalStorage("Heading");
+    // var heading = getLocalStorage("Heading");
     $('.select-sub-heading option').remove()
     $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
     $('.select-form #headings option').remove()
@@ -162,10 +162,21 @@ $(document).ready(function () {
 });
 
 // // testing start here:-
+
+// $(".select-form").on("click", function () {
+
+// }
+
+$(".select-form").on("click", function(){
+    
+})
+
+
 $('.select-input').on("change", function () {
     var frmchngvalue = $(this).val()
     var selectValue = frmchngvalue;
     console.log("Select Value", selectValue)
+    resSet()
     switch (selectValue) {
         case 'button':
             resSet()
