@@ -159,9 +159,6 @@ $(document).ready(function () {
         e.preventDefault();
         e.target.reset();
     })
-
-
-
 });
 
 // // testing start here:-
