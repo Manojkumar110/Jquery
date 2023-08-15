@@ -163,19 +163,15 @@ $(document).ready(function () {
 
 // // testing start here:-
 
-// $(".select-form").on("click", function () {
-
-// }
-
-$(".select-form").on("click", function(){
-    
-})
-
-
 $('.select-input').on("change", function () {
     var frmchngvalue = $(this).val()
     var selectValue = frmchngvalue;
-    console.log("Select Value", selectValue)
+    $('#Labels').val("");
+    $('#Ids').val("");
+    $('#Classes').val("");
+    $('#Placeholders').val("");
+    $('#Values').val("");
+    $('#Names').val("");
     resSet()
     switch (selectValue) {
         case 'button':
@@ -275,7 +271,7 @@ function resSet() {
     $('.values').attr('readonly', false);
 }
 
-function formReset(){
+function formReset() {
     $('.select-form')[0].reset();
 }
 
