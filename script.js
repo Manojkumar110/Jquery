@@ -129,64 +129,6 @@ $(document).ready(function () {
         });
     })
 
-    // testing start here:-
-    $("#controlType").click(function (e) {
-        var frmheading = $('.formheading option:selected').val()
-        var frmsh = $('.subheadingform option:selected').val()
-        $('.select-input').change(function () {
-            var frmchngvalue = $(this).val()
-            console.log("options :", frmchngvalue)
-            console.log("options Type :", jQuery.type(frmchngvalue))
-
-            var frmchngvalue = frmchngvalue;
-            switch (frmchngvalue) {
-                case 'button':
-                    $('.placeholders').attr('readonly', true);
-                    $('.labels').attr('readonly', true);
-                    break;
-                case 'checkbox':
-                    $('.placeholders').attr('readonly', true);
-                    $('.values').attr('readonly', true);
-                    break;
-                case 'color':
-                    $('.placeholders').attr('readonly', true);
-                    $('.values').attr('readonly', true);
-                    break;
-                case 'date':
-                    $('.placeholders').attr('readonly', true);
-                    $('.values').attr('readonly', true);
-                    break;
-                case 'datetime-local':
-                    $('.placeholders').attr('readonly', true);
-                    $('.values').attr('readonly', true);
-                    break;
-                case 'radio':
-                    $('.placeholders').attr('readonly', true);
-                    $('.values').attr('readonly', true);
-                    break;
-                case 'range':
-                    $('.placeholders').attr('readonly', true);
-                    break;
-                // default:
-                //     alert('Please Select Input Option!');
-            }
-        })
-        // var controlType = $('#controlType').val();
-        // var inputLabel = $('.labels').val()
-        // var inputClass = $('.classes').val()
-        // var InputId = $('.ids').val()
-        // var inputValue = $('.values').val()
-        // var inputName = $('.names').val()
-        // var inputActIion = $('.actions').val()
-        // var inputOption = $('.options').val()
-        // var element = '<input type="' + controlType + '"  " label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
-        // var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '"  /><br>'
-        // $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element)
-        // setLocalStorage();
-        // e.preventDefault();
-        // e.target.reset();
-    })
-    // tesing end here :-
 
 
     $(".select-form").on('submit', function (e) {
@@ -217,6 +159,51 @@ $(document).ready(function () {
 
 
 });
+
+// // testing start here:-
+$('.select-input').on("change", function () {
+    var frmchngvalue = $(this).val()
+    var selectValue = frmchngvalue;
+    console.log("Select Value", selectValue)
+    switch (selectValue) {
+        case 'button':
+            resSet()
+            $('.placeholders').attr('readonly', true);
+            $('.labels').attr('readonly', true);
+            break;
+        case 'checkbox':
+            resSet()
+            $('.placeholders').attr('readonly', true);
+            $('.values').attr('readonly', true);
+            break;
+        case 'color':
+            resSet()
+            $('.placeholders').attr('readonly', true);
+            $('.values').attr('readonly', true);
+            break;
+        case 'date':
+            resSet()
+            $('.placeholders').attr('readonly', true);
+            $('.values').attr('readonly', true);
+            break;
+        case 'datetime-local':
+            resSet()
+            $('.placeholders').attr('readonly', true);
+            $('.values').attr('readonly', true);
+            break;
+        case 'radio':
+            resSet()
+            $('.placeholders').attr('readonly', true);
+            $('.values').attr('readonly', true);
+            break;
+        case 'range':
+            resSet()
+            $('.placeholders').attr('readonly', true);
+            break;
+    }
+})
+// tesing end here :-
+
 
 // ----------------------------Form Section(old) End Here----------------------------------
 
@@ -269,5 +256,11 @@ $(".smtbtn").click(function () {
 
 });
 
+
+function resSet() {
+    $('.placeholders').attr('readonly', false);
+    $('.labels').attr('readonly', false);
+    $('.values').attr('readonly', false);
+}
 
 
