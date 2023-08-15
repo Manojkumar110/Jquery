@@ -69,6 +69,8 @@ $(document).ready(function () {
 
 // form section(New)
 $("#formModelId").click(function () {
+    // e.target.reset()
+    formReset()
     var heading = getLocalStorage("Heading");
     $('.select-sub-heading option').remove()
     $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
@@ -101,6 +103,8 @@ $("#formModelId").click(function () {
         });
     })
     // e.preventDefault();
+    // e.target.reset();
+
 });
 
 // ------------------Form(New)End Here----------------------------
@@ -222,14 +226,14 @@ $(document).ready(function () {
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: '#mainContainer',
-        cancel: 'h4, button'
+        cancel: 'h4, p'
     });
 
     $('.container').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: '.container',
-        cancel: 'label, h4, button'
+        cancel: 'h4, p'
     });
 
     $('section').sortable({
@@ -261,6 +265,10 @@ function resSet() {
     $('.placeholders').attr('readonly', false);
     $('.labels').attr('readonly', false);
     $('.values').attr('readonly', false);
+}
+
+function formReset(){
+    $('.select-form')[0].reset();
 }
 
 
