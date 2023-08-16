@@ -230,15 +230,15 @@ $(document).ready(function () {
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: '#mainContainer',
-        cancel: 'h4, p'
+        cancel: 'h4, button, p'
     });
 
-    $('.container').sortable({
-        change: function (event, ui) { setLocalStorage() },
-        update: function (event, ui) { setLocalStorage() },
-        connectWith: '.container',
-        cancel: 'h4, p'
-    });
+    // $('.container').sortable({
+    //     change: function (event, ui) { setLocalStorage() },
+    //     update: function (event, ui) { setLocalStorage() },
+    //     connectWith: '.container',
+    //     cancel: 'h4, button, p'
+    // });
 
     $('section').sortable({
         change: function (event, ui) { setLocalStorage() },

@@ -3,7 +3,7 @@
 }
 
 .subheadingtxt{
-    display: inline-block;
+    /* display: inline-block; */
     /* border: 1px solid lightgray; */
     padding: 5px 0px;
     border-radius: 10px;
@@ -19,3 +19,4 @@ section{
     padding-right: 10px;
     margin: 10px;
 }
+
