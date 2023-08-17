@@ -8,6 +8,7 @@ $(document).ready(function () {
     $(".select-heading").on('submit', function (e) {
         var heading = $('input').val()
         $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="Girl in a jacket" width="10" height="10"></button></h1></section>')
+        // $("main").append('<section><h1> ' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="Girl in a jacket" width="10" height="10"></button><div class="container"></div></h1></section>')
         $('.select-sub-heading option').remove()
         $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
         $('.select-form #headings option').remove()
@@ -54,6 +55,7 @@ $(document).ready(function () {
         var heading_in_sub_heading = $('select option:selected', this).val()
         var sub_heading = $('input', this).val()
         $("section:nth-child(" + heading_in_sub_heading + ")").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="delete button" width="10" height="10"></button></h4></div>')
+        // $("section h1:nth-child(" + heading_in_sub_heading + ")").append('<h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="delete button" width="10" height="10"></button></h4>')
         $('.select-form #sectionTagId option').remove()
         $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
         $('section .container h4').each(function (key) {
@@ -154,7 +156,8 @@ $(document).ready(function () {
         // var inputOption = $('.options').val()
         // var element = '<input type="' + controlType + '"  " label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
         var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '" placeholder="' + inputPlaceholder + '"  /><br>'
-        $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element)
+        $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element + '</p>')
+        // $('main section:nth-child(' + frmheading + ')button:nth-child(' + frmsh + ')').append('<p>' + element + '</p>')
         setLocalStorage();
         e.preventDefault();
         e.target.reset();
