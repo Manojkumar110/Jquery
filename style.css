@@ -23,3 +23,9 @@ section{
 /* h1, h4{
     display: inline-block;
 } */
+
+
+span{
+    padding-left: 10px;
+    /* padding-top: -10px; */
+}
