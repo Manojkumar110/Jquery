@@ -247,30 +247,53 @@ function getLocalStorage(property) {
 };
 
 // dragdrop
-$(document).ready(function () {
-    $('#mainContainer').sortable({
-        change: function (event, ui) { setLocalStorage() },
-        update: function (event, ui) { setLocalStorage() },
-        connectWith: '#mainContainer',
-        cancel: 'h4, button, p'
-    });
+// $(document).ready(function () {
+//     $('#mainContainer').sortable({
+//         change: function (event, ui) { setLocalStorage() },
+//         update: function (event, ui) { setLocalStorage() },
+//         connectWith: '#mainContainer',
+//         cancel: 'h4, button, p'
+//     });
 
-    // $('.container').sortable({
-    //     change: function (event, ui) { setLocalStorage() },
-    //     update: function (event, ui) { setLocalStorage() },
-    //     connectWith: '.container',
-    //     cancel: ''
-    // });
+//     $('.container').sortable({
+//         change: function (event, ui) { setLocalStorage() },
+//         update: function (event, ui) { setLocalStorage() },
+//         connectWith: '.container',
+//         cancel: ''
+//     });
+
+//     $('section').sortable({
+//         change: function (event, ui) { setLocalStorage() },
+//         update: function (event, ui) { setLocalStorage() },
+//         connectWith: 'section',
+//         cancel: 'h1'
+
+//     });
+//     setLocalStorage();
+// });
+
+$(function () {
+    $('#mainContainer').sortable({
+        change: function(event, ui){setLocalStorage()},
+        update: function(event, ui){setLocalStorage()},
+        connectWith: '#mainContainer'
+    });
 
     $('section').sortable({
-        change: function (event, ui) { setLocalStorage() },
-        update: function (event, ui) { setLocalStorage() },
+        change: function(event, ui){setLocalStorage()},
+        update: function(event, ui){setLocalStorage()},
         connectWith: 'section',
-        cancel: 'h1'
+        cancel: 'h1, button'
+    });
 
+    $('.container').sortable({
+        change: function(event, ui){setLocalStorage()},
+        update: function(event, ui){setLocalStorage()},
+        connectWith: '.container',
+        cancel: 'h4, button'
     });
     setLocalStorage();
-});
+})
 
 
 function removeFun(remove) {
