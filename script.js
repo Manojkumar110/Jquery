@@ -1,5 +1,6 @@
 // Heading :-
 $(document).ready(function () {
+
     var heading = getLocalStorage("Heading");
     if (heading) {
         $("#mainContainer").append(heading);
@@ -31,6 +32,20 @@ $(document).ready(function () {
         setLocalStorage();
     })
 });
+
+// new heading start here:-
+$("#headingTextModel").click(function (e) {
+    $(':input[type="submit"]').prop('disabled', true);
+    $('input[type="text"]').keyup(function () {
+        if ($(this).val() != '') {
+            $(':input[type="submit"]').prop('disabled', false);
+        }
+    });
+    e.target.resSet();
+})
+
+// new heading end here:-
+
 // -----------------------Heading End Here-------------------------------
 
 //Sub Heading Section(New) :-
@@ -153,8 +168,6 @@ $(document).ready(function () {
         });
     })
 
-
-
     $(".select-form").on('submit', function (e) {
         var frmheading = $('.formheading option:selected').val()
         var frmsh = $('.subheadingform option:selected').val()
@@ -247,6 +260,7 @@ function getLocalStorage(property) {
 };
 
 // dragdrop
+
 // $(document).ready(function () {
 //     $('#mainContainer').sortable({
 //         change: function (event, ui) { setLocalStorage() },
@@ -274,21 +288,21 @@ function getLocalStorage(property) {
 
 $(function () {
     $('#mainContainer').sortable({
-        change: function(event, ui){setLocalStorage()},
-        update: function(event, ui){setLocalStorage()},
+        change: function (event, ui) { setLocalStorage() },
+        update: function (event, ui) { setLocalStorage() },
         connectWith: '#mainContainer'
     });
 
     $('section').sortable({
-        change: function(event, ui){setLocalStorage()},
-        update: function(event, ui){setLocalStorage()},
+        change: function (event, ui) { setLocalStorage() },
+        update: function (event, ui) { setLocalStorage() },
         connectWith: 'section',
         cancel: 'h1, button'
     });
 
     $('.container').sortable({
-        change: function(event, ui){setLocalStorage()},
-        update: function(event, ui){setLocalStorage()},
+        change: function (event, ui) { setLocalStorage() },
+        update: function (event, ui) { setLocalStorage() },
         connectWith: '.container',
         cancel: 'h4, button'
     });
