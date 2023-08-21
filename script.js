@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     $(".select-heading").on('submit', function (e) {
         var heading = $('input').val()
-        $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="Girl in a jacket" width="10" height="10"></button></h1></section>')
+        $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h1></section>')
         // $("main").append('<section><h1> ' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="Girl in a jacket" width="10" height="10"></button><div class="container"></div></h1></section>')
         $('.select-sub-heading option').remove()
         $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
@@ -281,7 +281,6 @@ function getLocalStorage(property) {
 //         update: function (event, ui) { setLocalStorage() },
 //         connectWith: 'section',
 //         cancel: 'h1'
-
 //     });
 //     setLocalStorage();
 // });
@@ -297,14 +296,14 @@ $(function () {
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: 'section',
-        cancel: 'h1, button'
+        cancel: 'h1, button',
     });
 
     $('.container').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: '.container',
-        cancel: 'h4, button'
+        cancel: 'h4, button',
     });
     setLocalStorage();
 })
@@ -338,6 +337,7 @@ function resSet() {
     $('.labels').attr('readonly', false);
     $('.values').attr('readonly', false);
 }
+
 
 function formReset() {
     $('.select-form')[0].reset();
