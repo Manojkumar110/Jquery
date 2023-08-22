@@ -1,11 +1,9 @@
-// Heading :-
+// Heading start here :-
 $(document).ready(function () {
-
     var heading = getLocalStorage("Heading");
     if (heading) {
         $("#mainContainer").append(heading);
     }
-
     $(':input[type="submit"]').prop('disabled', true);
     $('input[type="text"]').keyup(function () {
         if ($(this).val() != '') {
@@ -16,7 +14,6 @@ $(document).ready(function () {
     $(".select-heading").on('submit', function (e) {
         var heading = $('input').val()
         $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h1></section>')
-        // $("main").append('<section><h1> ' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="Girl in a jacket" width="10" height="10"></button><div class="container"></div></h1></section>')
         $('.select-sub-heading option').remove()
         $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
         $('.select-form #headings option').remove()
@@ -33,7 +30,6 @@ $(document).ready(function () {
     })
 });
 
-// new heading start here:-
 $("#headingTextModel").click(function (e) {
     $(':input[type="submit"]').prop('disabled', true);
     $('input[type="text"]').keyup(function () {
@@ -43,12 +39,10 @@ $("#headingTextModel").click(function (e) {
     });
     e.target.resSet();
 })
+// heading end here :-
 
-// new heading end here:-
+// sub heading start here :- 
 
-// -----------------------Heading End Here-------------------------------
-
-//Sub Heading Section(New) :-
 $("#SubSeadingId").click(function () {
     $(':input[type="submit"]').prop('disabled', true);
     $('input[type="text"]').keyup(function () {
@@ -67,23 +61,15 @@ $("#SubSeadingId").click(function () {
         $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
         $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
     })
-    // e.preventDefault();
-    // e.target.reset();
     setLocalStorage();
 });
 
-
-// -------------------------Sub Heading New End Here---------------------------------
-
-
-// sub heading (old)
 $(document).ready(function () {
     getLocalStorage("Heading")
     $(".select-sub-heading").on('submit', function (e) {
         var heading_in_sub_heading = $('select option:selected', this).val()
         var sub_heading = $('input', this).val()
         $("section:nth-child(" + heading_in_sub_heading + ")").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h4></div>')
-        // $("section h1:nth-child(" + heading_in_sub_heading + ")").append('<h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="delete button" width="10" height="10"></button></h4>')
         $('.select-form #sectionTagId option').remove()
         $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
         $('section .container h4').each(function (key) {
@@ -95,9 +81,10 @@ $(document).ready(function () {
         })
     })
 });
-// ------------------------------Sub Heading old End Here-------------------------
 
-// form section(New)
+// sub heading end here :- 
+
+// form section start here :-
 $("#formModelId").click(function () {
     formReset()
     $(':input[type="submit"]').prop('disabled', true);
@@ -106,7 +93,6 @@ $("#formModelId").click(function () {
             $(':input[type="submit"]').prop('disabled', false);
         }
     });
-    // var heading = getLocalStorage("Heading");
     $('.select-sub-heading option').remove()
     $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
     $('.select-form #headings option').remove()
@@ -117,9 +103,6 @@ $("#formModelId").click(function () {
         $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
         $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
     })
-    // e.preventDefault();
-    // e.target.reset();
-    // setLocalStorage();
 
     var subheading = [];
     $('.formheading').on("change", function (e) {
@@ -137,14 +120,9 @@ $("#formModelId").click(function () {
                 .text(itemData));
         });
     })
-    // e.preventDefault();
-    // e.target.reset();
 
 });
 
-// ------------------Form(New)End Here----------------------------
-
-// form section(old) :- 
 $(document).ready(function () {
     $('section h1').each(function (key) {
         key = key + 1
@@ -177,27 +155,22 @@ $(document).ready(function () {
         })
         var controlType = $('#controlType').val();
         var inputLabel = $('.labels').val()
-        // var inputFor = $('.for').val()
         var inputClass = $('.classes').val()
         var InputId = $('.ids').val()
         var inputPlaceholder = $('.placeholders').val()
         var inputValue = $('.values').val()
         var inputName = $('.names').val()
-        // var inputActIion = $('.actions').val()
-        // var inputOption = $('.options').val()
-        // var element = '<input type="' + controlType + '"  " label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '" name="' + inputName + '" action="' + inputActIion + '" option="' + inputOption + '" /><br>'
         var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '" placeholder="' + inputPlaceholder + '"  />'
         $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element + '<span class="" onclick="removed(this)"><img src="img/delete.png" class="img-fluid" alt="" width="10" height="10"></span></p>')
-        // $("section:nth-child(" + heading_in_sub_heading + ")").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h4></div>')
-        // $('main section:nth-child(' + frmheading + ')button:nth-child(' + frmsh + ')').append('<p>' + element + '</p>')
         setLocalStorage();
         e.preventDefault();
         e.target.reset();
     })
 });
 
-// // testing start here:-
+// form section end here :- 
 
+// input validation start here :- 
 $('.select-input').on("change", function () {
     var frmchngvalue = $(this).val()
     var selectValue = frmchngvalue;
@@ -245,11 +218,9 @@ $('.select-input').on("change", function () {
             break;
     }
 })
-// tesing end here :-
+// input validation end here :-
 
-
-// ----------------------------Form Section(old) End Here----------------------------------
-
+// local storage start here :-
 function setLocalStorage() {
     var selectValue = $('#mainContainer').html();
     localStorage.setItem("Heading", selectValue);
@@ -259,32 +230,9 @@ function getLocalStorage(property) {
     return localStorage.getItem(property);
 };
 
-// dragdrop
+// local storage end here :-
 
-// $(document).ready(function () {
-//     $('#mainContainer').sortable({
-//         change: function (event, ui) { setLocalStorage() },
-//         update: function (event, ui) { setLocalStorage() },
-//         connectWith: '#mainContainer',
-//         cancel: 'h4, button, p'
-//     });
-
-//     $('.container').sortable({
-//         change: function (event, ui) { setLocalStorage() },
-//         update: function (event, ui) { setLocalStorage() },
-//         connectWith: '.container',
-//         cancel: ''
-//     });
-
-//     $('section').sortable({
-//         change: function (event, ui) { setLocalStorage() },
-//         update: function (event, ui) { setLocalStorage() },
-//         connectWith: 'section',
-//         cancel: 'h1'
-//     });
-//     setLocalStorage();
-// });
-
+// dragdrop start here :-
 $(function () {
     $('#mainContainer').sortable({
         change: function (event, ui) { setLocalStorage() },
@@ -308,7 +256,7 @@ $(function () {
     setLocalStorage();
 })
 
-
+// drag and drop end here:-
 function removeFun(remove) {
     $(remove).parent().siblings().remove();
     $(remove).parent().parent().remove();
@@ -328,9 +276,7 @@ function removed(remove) {
 
 $(".smtbtn").click(function () {
     location.reload();
-
 });
-
 
 function resSet() {
     $('.placeholders').attr('readonly', false);

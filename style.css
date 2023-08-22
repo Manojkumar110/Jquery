@@ -3,11 +3,9 @@
 }
 
 .subheadingtxt{
-    /* display: inline-block; */
-    /* border: 1px solid lightgray; */
     padding: 5px 0px;
     border-radius: 10px;
-    /* width: 100px; */
+   
 }
 
 section{
@@ -20,16 +18,7 @@ section{
     margin: 10px;
 }
 
-/* h1, h4{
-    display: inline-block;
-} */
-
-
 span{
     padding-left: 10px;
-    /* padding-top: -10px; */
+   
 }
-
-/* .container {
-    padding-bottom: 20px;
-}*/
