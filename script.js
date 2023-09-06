@@ -37,7 +37,7 @@ $("#headingTextModel").click(function () {
             $(':input[type="submit"]').prop('disabled', false);
         }
     });
-    // e.target.resSet();
+// e.target.resSet();
 })
 // heading end here :-
 
