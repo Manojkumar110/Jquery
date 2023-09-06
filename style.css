@@ -9,7 +9,7 @@
 }
 
 section{
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     border: 1px solid lightgray;
     border-radius: 5px;
     padding-top: 0px;
@@ -20,5 +20,48 @@ section{
 
 span{
     padding-left: 10px;
-   
+}
+
+
+.container{
+    padding-bottom: 30px;
+    
+}
+.container form{
+    min-height: 100px;
+    width: 100%;
+    
+}
+
+.subheads-list{
+    min-height: 200px;
+}
+
+
+main{
+    /* border: 1px solid red; */
+}
+
+section {
+    border: 1px solid yellow;
+}
+
+.subheads-list{
+    border: 1px solid orange;
+}
+
+.container {
+    /* border: 1px solid green; */
+}
+
+form {
+    border: 1px solid grey;
+    min-height: 40px;
+    padding: 1%;
+}
+
+form .forminputs{
+    border: 1px solid pink;
+    padding: 1%;
+    min-height: 40px;
 }

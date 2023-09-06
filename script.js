@@ -2,7 +2,7 @@
 $(document).ready(function () {
     var heading = getLocalStorage("Heading");
     if (heading) {
-        $("#mainContainer").append(heading);
+        $("main").append(heading);
     }
     $(':input[type="submit"]').prop('disabled', true);
     $('input[type="text"]').keyup(function () {
@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     $(".select-heading").on('submit', function (e) {
         var heading = $('input').val()
-        $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h1></section>')
+        $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h1><div class="subheads-list"></div></section>')
         $('.select-sub-heading option').remove()
         $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
         $('.select-form #headings option').remove()
@@ -30,14 +30,14 @@ $(document).ready(function () {
     })
 });
 
-$("#headingTextModel").click(function (e) {
+$("#headingTextModel").click(function () {
     $(':input[type="submit"]').prop('disabled', true);
     $('input[type="text"]').keyup(function () {
         if ($(this).val() != '') {
             $(':input[type="submit"]').prop('disabled', false);
         }
     });
-    e.target.resSet();
+    // e.target.resSet();
 })
 // heading end here :-
 
@@ -50,7 +50,7 @@ $("#SubSeadingId").click(function () {
             $(':input[type="submit"]').prop('disabled', false);
         }
     });
-    var heading = getLocalStorage("Heading");
+
     $('.select-sub-heading option').remove()
     $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
     $('.select-form #headings option').remove()
@@ -69,7 +69,7 @@ $(document).ready(function () {
     $(".select-sub-heading").on('submit', function (e) {
         var heading_in_sub_heading = $('select option:selected', this).val()
         var sub_heading = $('input', this).val()
-        $("section:nth-child(" + heading_in_sub_heading + ")").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h4></div>')
+        $("section:nth-child(" + heading_in_sub_heading + ") div.subheads-list").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h4><form></form>')
         $('.select-form #sectionTagId option').remove()
         $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
         $('section .container h4').each(function (key) {
@@ -105,7 +105,7 @@ $("#formModelId").click(function () {
     })
 
     var subheading = [];
-    $('.formheading').on("change", function (e) {
+    $('.formheading').on("change", function () {
         var heading_in_sub_heading = $('.formheading option:selected').val()
         $('.select-form #sectionTagId option').remove()
         $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
@@ -120,7 +120,7 @@ $("#formModelId").click(function () {
                 .text(itemData));
         });
     })
-
+    setLocalStorage();
 });
 
 $(document).ready(function () {
@@ -131,7 +131,7 @@ $(document).ready(function () {
         $('.formheading').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
     })
     var subheading = [];
-    $('.formheading').on("change", function (e) {
+    $('.formheading').on("change", function () {
         var heading_in_sub_heading = $('.formheading option:selected').val()
         $('.select-form #sectionTagId option').remove()
         $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
@@ -161,11 +161,13 @@ $(document).ready(function () {
         var inputValue = $('.values').val()
         var inputName = $('.names').val()
         var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '" placeholder="' + inputPlaceholder + '"  />'
-        $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element + '<span class="" onclick="removed(this)"><img src="img/delete.png" class="img-fluid" alt="" width="10" height="10"></span></p>')
+        // $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element + '<span class="" onclick="removed(this)"><img src="img/delete.png" class="img-fluid" alt="" width="10" height="10"></span></p>')
+        $('main section:nth-child(' + frmheading + ') div .container:nth-child(' + (frmsh - 1) + ') form').append('<div class="forminputs">' + element + '<span class="" onclick="removed(this)"><img src="img/delete.png" class="img-fluid" alt="" width="10" height="10"></span></div>')
         setLocalStorage();
         e.preventDefault();
         e.target.reset();
     })
+    setLocalStorage();
 });
 
 // form section end here :- 
@@ -222,7 +224,7 @@ $('.select-input').on("change", function () {
 
 // local storage start here :-
 function setLocalStorage() {
-    var selectValue = $('#mainContainer').html();
+    var selectValue = $('main').html();
     localStorage.setItem("Heading", selectValue);
 };
 
@@ -234,34 +236,55 @@ function getLocalStorage(property) {
 
 // dragdrop start here :-
 $(function () {
-    $('#mainContainer').sortable({
+    $('main').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
-        connectWith: '#mainContainer'
+        items:'> section ',
     });
 
-    $('section').sortable({
+    $('section div:first-of-type').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
-        connectWith: 'section',
-        cancel: 'h1, button',
+        connectWith: 'section > div',
+        items:'div',
+        dropOnEmpty: true,
+        cancel: 'h1, button div .forminputs ',
     });
 
-    $('.container').sortable({
+    // $('.subheads-list').sortable({
+    //     change: function (event, ui) { setLocalStorage() },
+    //     update: function (event, ui) { setLocalStorage() },
+    //     items:'> .container ',
+    // });
+
+    $('.subheads-list .container form').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
-        connectWith: '.container',
-        cancel: 'h4, button',
+        connectWith: 'section > div > div > form',
+        items:'.forminputs ',
+        dropOnEmpty: true,
     });
+
+    // $('.container').sortable({
+    //     change: function (event, ui) { setLocalStorage() },
+    //     update: function (event, ui) { setLocalStorage() },
+    //     connectWith: '.container',
+    //     items:'.forminputs',
+    //     dropOnEmpty: false,
+    //     cancel: 'h1, button ',
+    // });
+
+    
     setLocalStorage();
 })
+
 
 // drag and drop end here:-
 function removeFun(remove) {
     $(remove).parent().siblings().remove();
     $(remove).parent().parent().remove();
     setLocalStorage();
-    location.reload();
+    // location.reload();
 
 }
 
@@ -270,12 +293,12 @@ function removed(remove) {
     // $(remove).parent().siblings().remove();
     $(remove).parent().remove();
     setLocalStorage();
-    location.reload();
+    // location.reload();
 
 }
 
 $(".smtbtn").click(function () {
-    location.reload();
+    // location.reload();
 });
 
 function resSet() {
@@ -288,5 +311,3 @@ function resSet() {
 function formReset() {
     $('.select-form')[0].reset();
 }
-
-
