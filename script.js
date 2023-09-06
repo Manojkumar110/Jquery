@@ -251,11 +251,11 @@ $(function () {
         cancel: 'h1, button div .forminputs ',
     });
 
-    // $('.subheads-list').sortable({
-    //     change: function (event, ui) { setLocalStorage() },
-    //     update: function (event, ui) { setLocalStorage() },
-    //     items:'> .container ',
-    // });
+    $('.subheads-list').sortable({
+        change: function (event, ui) { setLocalStorage() },
+        update: function (event, ui) { setLocalStorage() },
+        items:'> .container ',
+    });
 
     $('.subheads-list .container form').sortable({
         change: function (event, ui) { setLocalStorage() },
@@ -265,14 +265,14 @@ $(function () {
         dropOnEmpty: true,
     });
 
-    // $('.container').sortable({
-    //     change: function (event, ui) { setLocalStorage() },
-    //     update: function (event, ui) { setLocalStorage() },
-    //     connectWith: '.container',
-    //     items:'.forminputs',
-    //     dropOnEmpty: false,
-    //     cancel: 'h1, button ',
-    // });
+    $('.container').sortable({
+        change: function (event, ui) { setLocalStorage() },
+        update: function (event, ui) { setLocalStorage() },
+        connectWith: '.container',
+        items:'.forminputs',
+        dropOnEmpty: false,
+        cancel: 'h1, button ',
+    });
 
     
     setLocalStorage();
