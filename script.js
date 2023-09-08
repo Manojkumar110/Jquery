@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     $(".select-heading").on('submit', function (e) {
         var heading = $('input').val()
-        $("main").append('<section><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h1><div class="subheads-list"></div></section>')
+        $("main").append('<section class="ui-sortable-handle"><h1>' + heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h1><div class="subheads-list ui-sortable"></div></section>')
         $('.select-sub-heading option').remove()
         $('.select-sub-heading select').append("<option value='' selected disabled>Please Select Heading</option>")
         $('.select-form #headings option').remove()
@@ -24,10 +24,13 @@ $(document).ready(function () {
             $('.select-form #headings').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
             $('.select-sub-heading select').append("<option value=" + key + ">" + heading_in_sub_heading + "</option>")
         })
+
+        setLocalStorage();
+        SortAbleFunction();
         e.preventDefault();
         e.target.reset();
-        setLocalStorage();
     })
+    SortAbleFunction();
 });
 
 $("#headingTextModel").click(function () {
@@ -37,7 +40,6 @@ $("#headingTextModel").click(function () {
             $(':input[type="submit"]').prop('disabled', false);
         }
     });
-// e.target.resSet();
 })
 // heading end here :-
 
@@ -65,21 +67,23 @@ $("#SubSeadingId").click(function () {
 });
 
 $(document).ready(function () {
-    getLocalStorage("Heading")
+    getLocalStorage("sub heading Heading")
     $(".select-sub-heading").on('submit', function (e) {
         var heading_in_sub_heading = $('select option:selected', this).val()
         var sub_heading = $('input', this).val()
-        $("section:nth-child(" + heading_in_sub_heading + ") div.subheads-list").append('<div class="container  mt-1"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h4><form></form>')
+        $("section:nth-child(" + heading_in_sub_heading + ") div.subheads-list").append('<div class="container mt-1 ui-sortable-handle ui-sortable"><h4 class="subheadingtxt">' + sub_heading + '<button class="remove btn btn-danger" onclick="removeFun(this)"><img src="img/delete.png" alt="" width="10" height="10"></button></h4><form class="ui-sortable"></form>')
         $('.select-form #sectionTagId option').remove()
         $('.select-form #sectionTagId').append("<option value='' selected disabled>Select Sub Heading</option>")
         $('section .container h4').each(function (key) {
             key = key + 1
             $(this).text()
+            setLocalStorage();
+            SortAbleFunction();
             e.preventDefault();
             e.target.reset();
-            setLocalStorage();
         })
     })
+    SortAbleFunction();
 });
 
 // sub heading end here :- 
@@ -121,6 +125,7 @@ $("#formModelId").click(function () {
         });
     })
     setLocalStorage();
+    SortAbleFunction();
 });
 
 $(document).ready(function () {
@@ -161,13 +166,14 @@ $(document).ready(function () {
         var inputValue = $('.values').val()
         var inputName = $('.names').val()
         var element = '<label >' + inputLabel + '</label > <input type="' + controlType + '"  label="' + inputLabel + '" class="' + inputClass + '" id="' + InputId + '" value="' + inputValue + '" name="' + inputName + '" placeholder="' + inputPlaceholder + '"  />'
-        // $('main section:nth-child(' + frmheading + ') div:nth-child(' + frmsh + ')').append('<p>' + element + '<span class="" onclick="removed(this)"><img src="img/delete.png" class="img-fluid" alt="" width="10" height="10"></span></p>')
-        $('main section:nth-child(' + frmheading + ') div .container:nth-child(' + (frmsh - 1) + ') form').append('<div class="forminputs">' + element + '<span class="" onclick="removed(this)"><img src="img/delete.png" class="img-fluid" alt="" width="10" height="10"></span></div>')
+        $('main section:nth-child(' + frmheading + ') div .container:nth-child(' + (frmsh - 1) + ') form').append('<div class="forminputs ui-sortable ui-sortable-handle">' + element + '<span class="" onclick="removed(this)"><img src="img/delete.png" class="img-fluid" alt="" width="10" height="10"></span></div>')
         setLocalStorage();
+        SortAbleFunction();
         e.preventDefault();
         e.target.reset();
     })
     setLocalStorage();
+    SortAbleFunction();
 });
 
 // form section end here :- 
@@ -235,18 +241,18 @@ function getLocalStorage(property) {
 // local storage end here :-
 
 // dragdrop start here :-
-$(function () {
+function SortAbleFunction() {
     $('main').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
-        items:'> section ',
+        items: '> section ',
     });
 
     $('section div:first-of-type').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: 'section > div',
-        items:'div',
+        items: 'div',
         dropOnEmpty: true,
         cancel: 'h1, button div .forminputs ',
     });
@@ -254,14 +260,14 @@ $(function () {
     $('.subheads-list').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
-        items:'> .container ',
+        items: '> .container ',
     });
 
     $('.subheads-list .container form').sortable({
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: 'section > div > div > form',
-        items:'.forminputs ',
+        items: '.forminputs ',
         dropOnEmpty: true,
     });
 
@@ -269,44 +275,33 @@ $(function () {
         change: function (event, ui) { setLocalStorage() },
         update: function (event, ui) { setLocalStorage() },
         connectWith: '.container',
-        items:'.forminputs',
+        items: '.forminputs',
         dropOnEmpty: false,
         cancel: 'h1, button ',
     });
 
-    
     setLocalStorage();
-})
-
-
+}
 // drag and drop end here:-
+
+
 function removeFun(remove) {
     $(remove).parent().siblings().remove();
     $(remove).parent().parent().remove();
     setLocalStorage();
-    // location.reload();
-
 }
-
 
 function removed(remove) {
-    // $(remove).parent().siblings().remove();
+
     $(remove).parent().remove();
     setLocalStorage();
-    // location.reload();
-
 }
-
-$(".smtbtn").click(function () {
-    // location.reload();
-});
 
 function resSet() {
     $('.placeholders').attr('readonly', false);
     $('.labels').attr('readonly', false);
     $('.values').attr('readonly', false);
 }
-
 
 function formReset() {
     $('.select-form')[0].reset();
